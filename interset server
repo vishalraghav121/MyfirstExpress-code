@@ -1,0 +1,15 @@
+const express= require("express");
+const app=express();
+app.get("/interset",function(req,res)
+{
+    const p=parseFloat(req.query.principle);
+    const r=parseFloat(req.query.rate);
+    const t=parseFloat(req.query.time);
+    if(isNaN(p)||isNaN(r)||isNaN(t))
+    {
+        res.status(400).send("invalid input")
+    }
+    const data=(p*r*t)/100;
+    res.send(data.toString());
+})
+app.listen(8000);
